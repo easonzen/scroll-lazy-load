@@ -7,6 +7,11 @@ import React, {
   useState,
 } from "react";
 
+interface IntersectionConfig {
+  root?: Element | Document | null;
+  rootMargin?: string;
+}
+
 interface ScrollLazyLoadProps {
   children: React.ReactNode;
   loadMore: () => Promise<any>;
@@ -14,6 +19,7 @@ interface ScrollLazyLoadProps {
   onError?: (error: any) => void;
   renderLoading?: () => React.ReactNode;
   renderNoMore?: () => React.ReactNode;
+  intersectionConfig?: IntersectionConfig;
 }
 
 const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
@@ -23,12 +29,17 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
   onError,
   renderLoading,
   renderNoMore,
+  intersectionConfig,
 }) => {
   const watch = useRef() as any;
   const [loading, setLoading] = useState(false);
   const [showNoMore, setShowNoMore] = useState(false);
 
   const load = useCallback(async () => {
+    if (showNoMore || loading) {
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -46,7 +57,7 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
     }
 
     setLoading(false);
-  }, [loadMore, hasMore, onError]);
+  }, [loadMore, hasMore, onError, showNoMore, loading]);
 
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
@@ -55,7 +66,7 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
       if (target.intersectionRatio <= 0) return;
 
       load();
-    });
+    }, intersectionConfig);
 
     // 开始观察
     io.observe(watch.current);
