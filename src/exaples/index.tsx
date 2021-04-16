@@ -1,16 +1,15 @@
 import React, { useCallback, useState } from "react";
 import ScrollLazyLoad from "../components/ScrollLazyLoad";
 
-const arr = new Array(50).fill("test");
+const arr = Array(50).fill("test");
 
 const Example = () => {
   const [rows, setRows] = useState(arr);
 
   const loadMore = useCallback(() => {
-    const newRows = [...rows].concat(new Array(10).fill("test"));
+    const newRows = [...rows].concat(Array(10).fill("test"));
     return new Promise((resolve) => {
       setTimeout(() => {
-        // console.log(newRows);
         setRows(newRows);
         resolve(true);
       }, 1000);

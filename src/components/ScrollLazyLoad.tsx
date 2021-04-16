@@ -48,7 +48,7 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
     setLoading(false);
   }, [loadMore, hasMore, onError]);
 
-  const observe = useCallback(() => {
+  useEffect(() => {
     const io = new IntersectionObserver((entries) => {
       const target = entries[0];
 
@@ -64,7 +64,7 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
       // 关闭观察器
       io.disconnect();
     };
-  }, []);
+  }, [load]);
 
   const renderLoadingEle = useCallback(() => {
     if (loading && renderLoading) {
@@ -85,10 +85,6 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
       return null;
     }
   }, [loading, showNoMore, renderNoMore]);
-
-  useEffect(() => {
-    observe();
-  }, []);
 
   return (
     <Fragment>
