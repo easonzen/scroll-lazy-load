@@ -3,44 +3,41 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.ts',
+    entry: './src/index',
     devtool: 'inline-source-map',
     output: {
-        filename: '[name].bundle.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
-    loader: {
-        module: {
-            rules: [
-                {
-                    test: /\.tsx?$/,
-                    use: 'ts-loader',
-                    exclude: /node_modules/,
-                },
-                {
-                    test: /\.m?js$/,
-                    exclude: /(node_modules|bower_components)/,
-                    use: {
+    resolve: {
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx|ts|tsx)$/,
+                exclude: /node-modules/,
+                use: [
+                    {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/preset-env']
+                            cacheDirectory: true,
+                            cacheCompression: false
                         }
                     }
-                },
-                {
-                    test: /\.css$/i,
-                    use: ["style-loader", "css-loader"],
-                },
-            ]
-        },
-    },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+                ]
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Development',
+            inject: true,
+            template: 'public/index.html',
         }),
     ],
     devServer: {
