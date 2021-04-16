@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import ScrollLazyLoad from "./components/ScrollLazyLoad";
+import React from "react";
+import ReactDOM from "react-dom";
+import Example from "./exaples";
 
-class Root extends Component {
-    render() {
-        return (
-            <ScrollLazyLoad />
-        )
-    }
-}
+const Root = () => {
+  return <Example />;
+};
 
 ReactDOM.render(
-    <React.StrictMode>
-      <Root />
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
+  document.getElementById("root")
 );
