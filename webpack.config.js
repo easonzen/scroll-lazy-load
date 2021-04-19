@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = {
-    mode: 'development',
+const config = {
     entry: './src/index',
     // devtool: 'inline-source-map',
     output: {
@@ -45,5 +45,17 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9000,
+    },
+}
+
+module.exports = (env, argv) => {
+    console.log(env, argv)
+    if (argv.mode === 'production') {
+        config.optimization = {
+            minimize: true,
+            minimizer: [new TerserPlugin()]
+        };
     }
+
+    return config;
 };

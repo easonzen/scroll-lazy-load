@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useRef } from "react";
-import ScrollLazyLoad from "../components/ScrollLazyLoad";
+import ScrollLazyLoad from "../src";
 
 const arr = Array(50).fill("test");
 
