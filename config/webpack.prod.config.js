@@ -5,8 +5,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 const prodConfig = {
     mode: 'production',
-    entry: './src/index.tsx',
-    // devtool: 'inline-source-map',
+    entry: path.resolve(__dirname, '../src/index'),
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, '../lib'),

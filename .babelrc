@@ -1,6 +1,12 @@
 {
   "presets": [
-    "@babel/preset-env",
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3
+      }
+    ],
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
@@ -8,11 +14,7 @@
     [
       "@babel/plugin-transform-runtime",
       {
-        "absoluteRuntime": false,
-        "corejs": 3,
-        "helpers": true,
-        "regenerator": true,
-        "version": "7.0.0-beta.0"
+        "corejs": 3
       }
     ]
   ]

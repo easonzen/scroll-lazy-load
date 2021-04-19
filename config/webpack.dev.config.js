@@ -3,8 +3,6 @@ const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-console.log(path.resolve(__dirname, 'dist'))
-
 const devConfig = {
     mode: 'development',
     entry: path.join(__dirname, "../examples/index"),
