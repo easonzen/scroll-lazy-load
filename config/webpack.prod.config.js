@@ -8,7 +8,7 @@ const prodConfig = {
     entry: path.resolve(__dirname, '../src/index'),
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, '../lib'),
+        path: path.resolve(__dirname, '../dist'),
         clean: true,
     },
     optimization: {

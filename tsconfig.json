@@ -13,8 +13,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve"
+    // "noEmit": true,
+    "jsx": "preserve",
+    "declaration": true,
+    // "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+    "outDir": "dist"
   },
-  "include": ["src", "examples/index"]
+  "include": ["src", "examples"]
 }

@@ -7,12 +7,12 @@ import React, {
   useState,
 } from "react";
 
-export interface IntersectionConfig {
+export declare interface IntersectionConfig {
   root?: Element | Document | null;
   rootMargin?: string;
 }
 
-export interface ScrollLazyLoadProps {
+export declare interface ScrollLazyLoadProps {
   children: React.ReactNode;
   loadMore: () => Promise<any>;
   hasMore: (data: any) => Boolean;
@@ -31,7 +31,7 @@ const ScrollLazyLoad: FC<ScrollLazyLoadProps> = ({
   renderNoMore,
   intersectionConfig,
 }) => {
-  const watch = useRef() as any;
+  const watch = useRef() as React.MutableRefObject<any>;
   const [loading, setLoading] = useState(false);
   const [showNoMore, setShowNoMore] = useState(false);
 

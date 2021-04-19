@@ -3,21 +3,32 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "usage",
-        "corejs": 3
+        "useBuiltIns": "entry",
+        "corejs": 3,
+        "modules": false,
+        "exclude": ["transform-typeof-symbol"]
       }
     ],
-    "@babel/preset-react",
-    "@babel/preset-typescript"
+    [
+      "@babel/preset-react",
+      {
+        "development": false,
+        "useBuiltIns": true,
+        "runtime": "classic"
+      }
+    ],
+    ["@babel/preset-typescript"]
   ],
   "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
     [
-      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-class-properties",
       {
-        "corejs": 3
+        "loose": true
       }
     ],
-    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-proposal-object-rest-spread"
   ]
 }
