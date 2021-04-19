@@ -7,12 +7,12 @@ import React, {
   useState,
 } from "react";
 
-interface IntersectionConfig {
+export interface IntersectionConfig {
   root?: Element | Document | null;
   rootMargin?: string;
 }
 
-interface ScrollLazyLoadProps {
+export interface ScrollLazyLoadProps {
   children: React.ReactNode;
   loadMore: () => Promise<any>;
   hasMore: (data: any) => Boolean;
