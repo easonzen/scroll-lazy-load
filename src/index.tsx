@@ -17,8 +17,8 @@ export declare interface ScrollLazyLoadProps {
   loadMore: () => Promise<any>;
   hasMore: (data: any) => Boolean;
   onError?: (error: any) => void;
-  renderLoading?: () => React.ReactNode;
-  renderNoMore?: () => React.ReactNode;
+  renderLoading?: () => React.ReactNode | React.ReactNode;
+  renderNoMore?: () => React.ReactNode | React.ReactNode;
   intersectionConfig?: IntersectionConfig;
 }
 
