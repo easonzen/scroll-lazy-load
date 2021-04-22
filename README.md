@@ -8,23 +8,23 @@
 
 | 属性名             | 类型                                     | 是否必填 | 描述                     | 默认值                  |
 | ------------------ | ---------------------------------------- | -------- | ------------------------ | ----------------------- |
-| loadMore           | () => Promise                            | 是       | 加载更多函数             | -                       |
+| loadMore           | () => Promise\<any\>                            | 是       | 加载更多函数             | -                       |
 | hasMore            | (data: any) => Boolean                   | 是       | 是否还有更多数据需要加载 | -                       |
 | onError            | (data: any) => Boolean                   | 否       | loadMore 请求报错函数    | -                       |
-| renderLoading      | () => React.ReactNode 或 React.ReactNode | 否       | 加载过程中 loading 展示  | <div>Loading...</div>   |
-| renderNoMore       | () => React.ReactNode 或 React.ReactNode | 否       | 无更多数据需要加载展示   | <div>暂无更多数据</div> |
-| intersectionConfig | IntersectionConfig                       | 否       | 详见 IntersectionConfig  | <div>暂无更多数据</div> |
+| renderLoading      | () => React.ReactNode \| React.ReactNode | 否       | 加载过程中 loading 展示  | <div>Loading...</div>   |
+| renderNoMore       | () => React.ReactNode \| React.ReactNode | 否       | 无更多数据需要加载展示   | <div>暂无更多数据</div> |
+| intersectionConfig | IntersectionConfig                       | 否       | 详见 IntersectionConfig  | -                       |
 
 ### IntersectionConfig
 
 | 属性名     | 类型                        | 是否必填 | 描述             | 默认值                    |
 | ---------- | --------------------------- | -------- | ---------------- | ------------------------- |
-| root       | Element 、 Document 、 null | 否       | 滚动区域的根节点 | ScrollLazyLoad 组件父节点 |
+| root       | Element \| Document \| null | 否       | 滚动区域的根节点 | ScrollLazyLoad 组件父节点 |
 | rootMargin | string                      | 否       |  滚动区域 margin | -                         |
 
 **注：root, rootMargin 参数同 [Intersection Observer](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)**
 
-##例子
+## 例子
 
 ```js
 import React, { useCallback, useState, useRef } from "react";
